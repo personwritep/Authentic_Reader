@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Authentic Reader
 // @namespace        http://blog.ameba.jp
-// @version        1.5
+// @version        1.6
 // @description        自動プログラムの時限フォローを判定する
 // @author        Ameba Blog User
 // @match        https://blog.ameba.jp/ucs/reader/readerlist.do*
@@ -586,9 +586,9 @@ function main(){
 
             if(d_button){
                 d_button.onclick=function(){
-                    off_history(name); }}}
+                    off_history(name, k); }}}
 
-        function off_history(name_){
+        function off_history(name_, k){
             for(let i=0; i<readers.length; i++){
                 if(name_==readers[i][0]){
                     let result=window.confirm(
@@ -599,7 +599,14 @@ function main(){
                     if(result){
                         readers.splice(i, 1);
                         write_local();
-                        window.location.reload(true); }}}}
+
+                        table_tr[k].remove();
+                        deleted_reader=deleted_reader-1;
+                        let data_disp=document.querySelector('#inner_AR2 .data_disp');
+                        if(data_disp){
+                            data_disp.textContent='hidden: '+ deleted_reader; }}
+
+                }}}
     } // remove_data()
 
 
@@ -729,6 +736,5 @@ function main(){
     } // AR_backup()
 
 } // main()
-
 
 

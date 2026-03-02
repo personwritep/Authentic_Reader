@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Authentic Reader
 // @namespace        http://blog.ameba.jp
-// @version        1.7
+// @version        1.8
 // @description        自動プログラムの時限フォローを判定する
 // @author        Ameba Blog User
 // @match        https://blog.ameba.jp/ucs/reader/readerlist.do*
@@ -117,9 +117,9 @@ if(location.href=="https://blog.ameba.jp/block"){ // 管理 - 制限したブロ
             let count=
                 '<span class="bwbcount">'+
                 '<span class="count_txt">ブロック件数</span>'+ block_item.length +
-                '<style>.bwbcount { position: absolute; top: 20px; right: 24px; '+
-                'padding: 1px 6px; height: 26px; border: 1px solid #aaa; } '+
-                '.count_txt { font-size: 13px; margin-right: 10px; vertical-align: 1px; } '+
+                '<style>.bwbcount { position: absolute !important; top: 20px; right: 24px; '+
+                'padding: 1px 6px 0 !important; height: 26px; border: 1px solid #aaa; } '+
+                '.count_txt { font-size: 13px !important; margin-right: 10px; vertical-align: 1px; } '+
                 '@media screen and (max-width: 768px){ .bwbcount { top: 8px; right: 2px; }}'+
                 '</style></span>';
             if(!document.querySelector('.bwbcount')){
@@ -735,4 +735,3 @@ function main(){
     } // AR_backup()
 
 } // main()
-

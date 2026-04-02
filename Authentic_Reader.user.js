@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Authentic Reader
 // @namespace        http://blog.ameba.jp
-// @version        1.8
+// @version        1.9
 // @description        自動プログラムの時限フォローを判定する
 // @author        Ameba Blog User
 // @match        https://blog.ameba.jp/ucs/reader/readerlist.do*
@@ -88,16 +88,6 @@ if(location.href=="https://blog.ameba.jp/block"){ // 管理 - 制限したブロ
                 id +'</span>';
             let status=block_item[k].querySelector('.BlogWebBlock_status__66mul');
             status.insertAdjacentHTML('beforeend', id);
-
-            let u_img=block_item[k].querySelector('img');
-            if(u_img){
-                if(u_img.src.includes('common/noimage')){
-                    u_img.style.border='30px solid #000';
-                    let button_w=block_item[k].querySelector('.BlogWebBlock_edit-button__S09HN');
-                    let button=block_item[k].querySelector('.spui-Button');
-                    if(button_w && button){
-                        button_w.style.width='120px';
-                        button.textContent='退会済　編集'; }}}
 
             block_item[k].onclick=function(event){
                 event.preventDefault();

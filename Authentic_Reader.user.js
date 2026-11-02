@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Authentic Reader
 // @namespace        http://blog.ameba.jp
-// @version        2.0
+// @version        2.1
 // @description        自動プログラムの時限フォローを判定する
 // @author        Ameba Blog User
 // @match        https://blog.ameba.jp/ucs/reader/readerlist.do*
@@ -72,7 +72,7 @@ if(location.href=="https://blog.ameba.jp/block"){ // 管理 - 制限したブロ
         retry++;
         if(retry>10){ // リトライ制限 10回 2secまで
             clearInterval(interval); }
-        let target=document.querySelector('.BlogWebBlock-module__6DSusa__next-button button');
+        let target=document.querySelector('._6DSusa_next-button button');
         if(target){
             target.click(); }}
 
@@ -80,13 +80,13 @@ if(location.href=="https://blog.ameba.jp/block"){ // 管理 - 制限したブロ
     setTimeout(()=>{
         item_count_disp();
 
-        let block_item=document.querySelectorAll('.BlogWebBlock-module__6DSusa__item');
+        let block_item=document.querySelectorAll('._6DSusa_item');
         for(let k=0; k<block_item.length; k++){
             let href_row=block_item[k].querySelector('a').getAttribute('href');
             let id=href_row.split('/')[3];
             id='<span style="font: bold 16px Meiryo; color: #888; margin-left: 2em;">'+
                 id +'</span>';
-            let status=block_item[k].querySelector('.BlogWebBlock-module__6DSusa__status');
+            let status=block_item[k].querySelector('._6DSusa_status');
             status.insertAdjacentHTML('beforeend', id);
 
             block_item[k].onclick=function(event){
@@ -101,7 +101,7 @@ if(location.href=="https://blog.ameba.jp/block"){ // 管理 - 制限したブロ
 
 
     function item_count_disp(){
-        let block_item=document.querySelectorAll('.BlogWebBlock-module__6DSusa__item');
+        let block_item=document.querySelectorAll('._6DSusa_item');
         let breadc=document.querySelector('.spui-Breadcrumb');
         if(breadc){
             let count=
